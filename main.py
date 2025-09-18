@@ -28,39 +28,40 @@ def google_search(state: State):
     return 
 
 
-def google_search(state: State):
+def bing_search(state: State):
     return 
 
 
-def google_search(state: State):
+def reddit_search(state: State):
     return 
 
 
-def google_search(state: State):
-    return 
-
-
-
-def google_search(state: State):
-    return 
-
-
-def google_search(state: State):
+def analyze_reddit_posts(state: State):
     return 
 
 
 
-def google_search(state: State):
+def retrieve_reddit_posts(state: State):
     return 
 
 
-def google_search(state: State):
+def analyze_google_results(state: State):
     return 
 
 
 
-def google_search(state: State):
+def analyze_bing_results(state: State):
     return 
 
-def google_search(state: State):
+
+def analyze_reddit_results(state: State):
     return 
+
+
+
+def synthesize_analyses(state: State):
+    return 
+
+graph_builder = StateGraph(State)
+
+graph_builder.add_node("google_search", google_search)

@@ -65,3 +65,11 @@ def synthesize_analyses(state: State):
 graph_builder = StateGraph(State)
 
 graph_builder.add_node("google_search", google_search)
+graph_builder.add_node("bing_search", bing_search)
+graph_builder.add_node("reddit_search", reddit_search)
+graph_builder.add_node("analyze_reddit_posts", analyze_reddit_posts)
+graph_builder.add_node("analyze_google_results", analyze_google_results)
+graph_builder.add_node("analyze_bing_results", analyze_bing_results)
+graph_builder.add_node("analyze_reddit_results", analyze_reddit_results)
+graph_builder.add_node("retrieve_reddit_posts", retrieve_reddit_posts)
+graph_builder.add_node("sysynthesize_analyses",synthesize_analyses)

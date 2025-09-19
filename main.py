@@ -85,3 +85,15 @@ graph_builder.add_edge("reddit_search", "analyze_reddit_posts")
 graph_builder.add_edge("analyze_reddit_posts", "retrieve_reddit_posts")
 
 graph_builder.add_edge("retrieve_reddit_posts", "analyze_google_results")
+graph_builder.add_edge("retrieve_reddit_posts", "analyze_bing_results")
+graph_builder.add_edge("retrieve_reddit_posts", "analyze_reddit_results")
+
+graph_builder.add_edge("analyze_google_results", "synthesize_analyses")
+graph_builder.add_edge("analyze_bing_results", "synthesize_analyses")
+graph_builder.add_edge("analyze_reddit_results", "synthesize_analyses")
+
+
+
+
+
+graph_builder.add_edge("synthesize_analyses", END)

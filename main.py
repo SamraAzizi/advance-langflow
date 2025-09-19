@@ -111,6 +111,17 @@ def run_chatbot():
             break
 
         state = {
-            "messages": [{"role":"user", "content": user_input}]
+            "messages": [{"role":"user", "content": user_input}],
+            "user_question": user_input,
+            "google_results":None,
+            "bing_results": None,
+            "reddit_results":None,
+            "selected_reddit_urls": None,
+            "reddit_post_data": None,
+            "google_analysis": None,
+            "bing_analysis": None,
+            "reddit_analysis": None,
+            "final_answer": None,
+
 
         }

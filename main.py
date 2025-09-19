@@ -25,15 +25,27 @@ class State(TypedDict):
 
 
 def google_search(state: State):
-    return 
+    user_question = state.get("user_question", "")
+    print(f"Searching Google for: {user_question}")
+
+    google_results =[] 
+    return  {"google_results": google_results}
 
 
 def bing_search(state: State):
-    return 
+    user_question = state.get("user_question", "")
+    print(f"Searching Bing for: {user_question}")
+
+    bing_results =[] 
+    return  {"bing_results": bing_results}
 
 
 def reddit_search(state: State):
-    return 
+    user_question = state.get("user_question", "")
+    print(f"Searching Reddit for: {user_question}")
+
+    reddit_results =[] 
+    return  {"reddit_results": reddit_results} 
 
 
 def analyze_reddit_posts(state: State):

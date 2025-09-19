@@ -97,3 +97,20 @@ graph_builder.add_edge("analyze_reddit_results", "synthesize_analyses")
 
 
 graph_builder.add_edge("synthesize_analyses", END)
+
+graph = graph_builder.compile()
+
+def run_chatbot():
+    print("Multi-Source Research Agent")
+    print("Type 'exit to quit\n")
+
+    while True:
+        user_input = input("Ask me anything: ")
+        if user_input.lower() == "exit":
+            print("Bye")
+            break
+
+        state = {
+            "messages": [{"role":"user", "content": user_input}]
+
+        }

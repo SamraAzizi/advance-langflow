@@ -125,3 +125,16 @@ def run_chatbot():
 
 
         }
+        print("\n Starting parallel research process...")
+        print("Launching Google, Bing, and Reddit searches...\n")
+        final_state = graph.invoke(state)
+
+
+        if final_state.get("final answer"):
+            print(f"\nFinal Answer:\n{final_state.get('final_answer')}\n")
+
+            print("-" * 80)
+
+
+if __name__ == "__main__":
+    run_chatbot()

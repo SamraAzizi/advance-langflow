@@ -29,3 +29,16 @@ def _make_api_request(url, **kwargs):
 def serp_search(query, engine="google"):
     if engine == "google":
         base_url = "https://www.google.com/search"
+    elif engine == "bing":
+        base_url = "https://www.bing.com/search"
+    else:
+        raise ValueError(f"Unknown engine {engine}")
+    
+    url = "https://api.brightdata.com/request"
+
+    payload ={
+        "zone": "ai_agent2",
+        "url" : f"{base_url}?q={quote_plus(query)}&brd_json=1",
+        "format" : "raw"
+
+    }

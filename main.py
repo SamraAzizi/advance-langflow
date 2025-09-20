@@ -49,30 +49,32 @@ def reddit_search(state: State):
 
 
 def analyze_reddit_posts(state: State):
-    return 
+
+    return { "selected_reddit_urls" : []}
+
 
 
 
 def retrieve_reddit_posts(state: State):
-    return 
+    return  {"reddit_post_data": []}
 
 
 def analyze_google_results(state: State):
-    return 
+    return {"google_analysis": ""}
 
 
 
 def analyze_bing_results(state: State):
-    return 
+    return {"bing_analysis": ""}
 
 
 def analyze_reddit_results(state: State):
-    return 
+    return {"reddit_analysis": ""} 
 
 
 
 def synthesize_analyses(state: State):
-    return 
+    return {"final_answer": ""}
 
 graph_builder = StateGraph(State)
 

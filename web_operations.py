@@ -42,3 +42,14 @@ def serp_search(query, engine="google"):
         "format" : "raw"
 
     }
+
+    full_response = _make_api_request(url, json=payload)
+    if not full_response:
+        return None
+    
+    extracted_data = {
+        "knowledge": full_response.get("knowledge", {}),
+        "organic": full_response.get("organic", [])
+    }
+
+    return extracted_data

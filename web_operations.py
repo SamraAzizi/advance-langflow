@@ -53,3 +53,9 @@ def serp_search(query, engine="google"):
     }
 
     return extracted_data
+
+def reddit_search(keyword, date="All Time", sort_by="Hot", num_of_posts=75):
+    trigger_url = "https://api.brightdata.com/dataset/v3/trigger"
+    params = {
+        
+    }

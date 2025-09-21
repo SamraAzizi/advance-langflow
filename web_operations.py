@@ -56,10 +56,17 @@ def serp_search(query, engine="google"):
 
 def _trigger_and_download_snapshot(trigger_url, params, data, operation_name="operation"):
 
-
-
-
+    trigger_result = _make_api_request(trigger_url, params=params, json=data)
+    if not trigger_result:
+        return None
     
+    snapshot_id = trigger_result.get("snapshot_id")
+    if not snapshot_id:
+        return None
+
+
+
+
 def reddit_search(keyword, date="All Time", sort_by="Hot", num_of_posts=75):
     trigger_url = "https://api.brightdata.com/dataset/v3/trigger"
     params = {

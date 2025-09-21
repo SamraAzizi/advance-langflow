@@ -25,3 +25,20 @@ def poll_snapshot_status(
 
             progress_data = response.json()
             status = progress_data.get("status")
+
+            if status == "ready":
+                print("✅ Snapshot completed!")
+                return True
+            elif status == "failed":
+                print("❌ Snapshot failed")
+                return False
+            elif status == "running":
+                print("🔄 Still processing...")
+                time.sleep(delay)
+            else:
+                print(f"❓ Unknown status: {status}")
+                time.sleep(delay)
+
+        except Exception as e:
+            print(f"⚠️ Error checking progress: {e}")
+            time.sleep(delay)

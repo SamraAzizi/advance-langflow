@@ -54,8 +54,34 @@ def serp_search(query, engine="google"):
 
     return extracted_data
 
+def _trigger_and_download_snapshot(trigger_url, params, data, operation_name="operation"):
+
+
+
+
+    
 def reddit_search(keyword, date="All Time", sort_by="Hot", num_of_posts=75):
     trigger_url = "https://api.brightdata.com/dataset/v3/trigger"
     params = {
-        
+
+        "dataset_id": "",
+        "include_error": "true",
+        "type": "discover_new",
+        "discover_by": "keyword"
+
     }
+
+    data = [
+        {
+            "keyword": keyword,
+            "date": date,
+            "sort_by": sort_by,
+            "num_of_posts": num_of_posts,
+        }
+    ]
+
+    raw_data = None
+
+    if not raw_data:
+        return None
+    

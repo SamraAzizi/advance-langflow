@@ -42,10 +42,16 @@ def poll_snapshot_status(
         except Exception as e:
             print(f"⚠️ Error checking progress: {e}")
             time.sleep(delay)
-             print("⏰ Timeout waiting for snapshot completion")
+    print("⏰ Timeout waiting for snapshot completion")
     return False
 
 
 def download_snapshot(
     snapshot_id: str, format: str = "json"
 ) -> Optional[List[Dict[Any, Any]]]:
+    
+    api_key = os.getenv("BRIGHTDATA_API_KEY")
+    download_url = (
+        f"https://api.brightdata.com/datasets/v3/snapshot/{snapshot_id}?format={format}"
+    )
+    headers = {"Authorization": f"Bearer {api_key}"}

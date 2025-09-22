@@ -55,3 +55,13 @@ def download_snapshot(
         f"https://api.brightdata.com/datasets/v3/snapshot/{snapshot_id}?format={format}"
     )
     headers = {"Authorization": f"Bearer {api_key}"}
+
+
+    try:
+        print("📥 Downloading snapshot data...")
+
+        response = requests.get(download_url, headers=headers)
+        response.raise_for_status()
+
+        data = response.json()
+        print(

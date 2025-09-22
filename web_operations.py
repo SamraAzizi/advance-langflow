@@ -2,6 +2,8 @@ from dotenv import load_dotenv
 import os
 import requests
 from urllib.parse import quote_plus
+from snapshot_operations import download_snapshot, poll_snapshot_status
+
 
 load_dotenv()
 
@@ -64,8 +66,10 @@ def _trigger_and_download_snapshot(trigger_url, params, data, operation_name="op
     if not snapshot_id:
         return None
 
-
-
+    if not poll_snapshot_status(snapshot_id):
+        return None
+    raw_data = download_snapshot(snapshot_id)
+    return raw_data
 
 def reddit_search(keyword, date="All Time", sort_by="Hot", num_of_posts=75):
     trigger_url = "https://api.brightdata.com/dataset/v3/trigger"
@@ -87,8 +91,16 @@ def reddit_search(keyword, date="All Time", sort_by="Hot", num_of_posts=75):
         }
     ]
 
-    raw_data = None
+    raw_data = _trigger_and_download_snapshot(
+        trigger_url, params, data, operation_name="raddit"
+    )
 
     if not raw_data:
         return None
+    
+    parsed_data = []
+    for post in raw_data:
+        parsed_post = {
+            
+        }
     

@@ -148,3 +148,6 @@ def reddit_post_retrieval(url, days_back=10, load_all_replies=False, comment_lim
             "post_title": comment.get("post_title"),
         }
         parsed_comments.append(parsed_comment)
+
+
+    return {"comments": parsed_comments, "total_retrieved": len(parsed_comments)}

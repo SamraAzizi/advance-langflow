@@ -21,3 +21,11 @@ Return a structured response with the selected URLs."""
     def reddit_url_analysis_user(user_question: str, reddit_results: str) -> str:
         """User prompt for analyzing Reddit URLs."""
         return f"""User Question: {user_question}
+Reddit Results: {reddit_results}
+
+Please analyze these Reddit results and identify the most valuable posts for answering the user's question."""
+
+    @staticmethod
+    def google_analysis_system() -> str:
+        """System prompt for analyzing Google search results."""
+        return """You are an expert research analyst. Analyze the provided Google search results to extract key insights that answer the user's question.

@@ -110,3 +110,23 @@ def reddit_search_api(keyword, date="All Time", sort_by="Hot", num_of_posts=75):
 
     return {"parsed_posts": parsed_data, "total_found": len(parsed_data)}
     
+def reddit_post_retrieval(url, days_back=10, load_all_replies=False, comment_limit=""):
+    if not urls:
+        return None
+    trigger_url = "https://api.brightdata.com/dataset/v3/trigger"
+
+    params = {
+        "data_id": "",
+        "include_error": "true"
+    }
+
+    data = [
+        {
+            "url" : url,
+            "days_back": days_back,
+            "load_all_replies": load_all_replies,
+            "comment_limit": comment_limit
+        }
+
+        for url in urls
+    ]

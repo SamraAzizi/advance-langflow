@@ -130,3 +130,21 @@ def reddit_post_retrieval(url, days_back=10, load_all_replies=False, comment_lim
 
         for url in urls
     ]
+
+    raw_data = _trigger_and_download_snapshot(
+        trigger_url, params, data, operation_name="reddit comments"
+
+    )
+    if not raw_data:
+        return None
+    
+    parsed_comments = []
+    for comment in raw_data:
+        parsed_comment = {
+            "comment_id": comment.get("comment_id"),
+            "content": comment.get("content"),
+            "date": comment.get("date"),
+            "parsed_comment_id": comment.get("parent_comment_id"),
+            "post_title": comment.get("post_title"),
+        }
+        parsed_comments.append(parsed_comment)

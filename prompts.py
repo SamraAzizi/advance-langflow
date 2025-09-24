@@ -85,3 +85,26 @@ Highlight both positive and negative experiences, controversies, and varying opi
     def reddit_analysis_user(
         user_question: str, reddit_results: str, reddit_post_data: list
     ) -> str:
+    """User prompt for analyzing Reddit discussions."""
+        return f"""Question: {user_question}
+
+Reddit Search Results: {reddit_results}
+
+Detailed Reddit Post Data: {reddit_post_data}
+
+Please analyze this Reddit content and extract community insights, user experiences, and relevant discussions."""
+
+    @staticmethod
+    def synthesis_system() -> str:
+        """System prompt for synthesizing all analyses."""
+        return """You are an expert research synthesizer. Combine the provided analyses from different sources to create a comprehensive, well-structured answer.
+
+Your task:
+- Synthesize insights from Google, Bing, and Reddit analyses
+- Identify common themes and conflicting information
+- Present a balanced view incorporating different perspectives
+- Structure the response logically with clear sections
+- Cite the source type (Google, Bing, Reddit) for key claims
+- Highlight any contradictions or uncertainties
+
+Create a comprehensive answer that addresses the user's question from multiple angles."""

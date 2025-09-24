@@ -108,3 +108,23 @@ Your task:
 - Highlight any contradictions or uncertainties
 
 Create a comprehensive answer that addresses the user's question from multiple angles."""
+@staticmethod
+    def synthesis_user(
+        user_question: str,
+        google_analysis: str,
+        bing_analysis: str,
+        reddit_analysis: str,
+    ) -> str:
+        """User prompt for synthesizing all analyses."""
+        return f"""Question: {user_question}
+
+Google Analysis: {google_analysis}
+
+Bing Analysis: {bing_analysis}
+
+Reddit Community Analysis: {reddit_analysis}
+
+Please synthesize these analyses into a comprehensive answer that addresses the question from multiple perspectives."""
+
+
+def create_message_pair(system_prompt: str, user_prompt: str) -> list[Dict[str, Any]]:

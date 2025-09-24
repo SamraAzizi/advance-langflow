@@ -57,3 +57,17 @@ Focus on:
 - Microsoft ecosystem and enterprise perspectives
 
 Provide a concise analysis highlighting unique findings and perspectives."""
+
+@staticmethod
+    def bing_analysis_user(user_question: str, bing_results: str) -> str:
+        """User prompt for analyzing Bing search results."""
+        return f"""Question: {user_question}
+
+Bing Search Results: {bing_results}
+
+Please analyze these Bing results and extract insights that complement other search sources."""
+
+    @staticmethod
+    def reddit_analysis_system() -> str:
+        """System prompt for analyzing Reddit discussions."""
+        return """You are an expert at analyzing social media discussions. Analyze the provided Reddit content to extract community insights and user experiences.

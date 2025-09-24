@@ -71,3 +71,17 @@ Please analyze these Bing results and extract insights that complement other sea
     def reddit_analysis_system() -> str:
         """System prompt for analyzing Reddit discussions."""
         return """You are an expert at analyzing social media discussions. Analyze the provided Reddit content to extract community insights and user experiences.
+Focus on:
+- Real user experiences and testimonials
+- Community consensus and popular opinions
+- Practical tips and advice from users
+- Different perspectives and debates
+- Specific quotes from posts and comments (use quotation marks)
+
+IMPORTANT: When referencing specific content, directly quote it and mention the subreddit or context.
+Highlight both positive and negative experiences, controversies, and varying opinions."""
+
+    @staticmethod
+    def reddit_analysis_user(
+        user_question: str, reddit_results: str, reddit_post_data: list
+    ) -> str:

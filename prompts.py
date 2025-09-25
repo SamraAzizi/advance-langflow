@@ -9,7 +9,7 @@ class PromptTemplates:
         """System prompt for analyzing Reddit URLs."""
         return """You are an expert at analyzing social media content. Your task is to examine Reddit search results and identify the most relevant posts that would provide valuable additional information for answering the user's question.
 
-        Analyze the provided Reddit results and identify URLs of posts that contain valuable information worth investigating further. Focus on posts that:
+Analyze the provided Reddit results and identify URLs of posts that contain valuable information worth investigating further. Focus on posts that:
 - Directly relate to the user's question
 - Contain detailed discussions or expert opinions
 - Have high engagement (upvotes/comments)
@@ -21,6 +21,7 @@ Return a structured response with the selected URLs."""
     def reddit_url_analysis_user(user_question: str, reddit_results: str) -> str:
         """User prompt for analyzing Reddit URLs."""
         return f"""User Question: {user_question}
+
 Reddit Results: {reddit_results}
 
 Please analyze these Reddit results and identify the most valuable posts for answering the user's question."""
@@ -29,11 +30,13 @@ Please analyze these Reddit results and identify the most valuable posts for ans
     def google_analysis_system() -> str:
         """System prompt for analyzing Google search results."""
         return """You are an expert research analyst. Analyze the provided Google search results to extract key insights that answer the user's question.
-        Focus on:
+
+Focus on:
 - Main factual information and authoritative sources
 - Official websites, documentation, and reliable sources
 - Key statistics, dates, and verified information
 - Any conflicting information from different sources
+
 Provide a concise analysis highlighting the most relevant findings."""
 
     @staticmethod
@@ -58,7 +61,7 @@ Focus on:
 
 Provide a concise analysis highlighting unique findings and perspectives."""
 
-@staticmethod
+    @staticmethod
     def bing_analysis_user(user_question: str, bing_results: str) -> str:
         """User prompt for analyzing Bing search results."""
         return f"""Question: {user_question}
@@ -71,6 +74,7 @@ Please analyze these Bing results and extract insights that complement other sea
     def reddit_analysis_system() -> str:
         """System prompt for analyzing Reddit discussions."""
         return """You are an expert at analyzing social media discussions. Analyze the provided Reddit content to extract community insights and user experiences.
+
 Focus on:
 - Real user experiences and testimonials
 - Community consensus and popular opinions
@@ -85,7 +89,7 @@ Highlight both positive and negative experiences, controversies, and varying opi
     def reddit_analysis_user(
         user_question: str, reddit_results: str, reddit_post_data: list
     ) -> str:
-    """User prompt for analyzing Reddit discussions."""
+        """User prompt for analyzing Reddit discussions."""
         return f"""Question: {user_question}
 
 Reddit Search Results: {reddit_results}
@@ -108,7 +112,8 @@ Your task:
 - Highlight any contradictions or uncertainties
 
 Create a comprehensive answer that addresses the user's question from multiple angles."""
-@staticmethod
+
+    @staticmethod
     def synthesis_user(
         user_question: str,
         google_analysis: str,
@@ -145,7 +150,6 @@ def create_message_pair(system_prompt: str, user_prompt: str) -> list[Dict[str, 
 
 
 # Convenience functions for creating complete message arrays
-
 def get_reddit_url_analysis_messages(
     user_question: str, reddit_results: str
 ) -> list[Dict[str, Any]]:
@@ -175,6 +179,7 @@ def get_bing_analysis_messages(
         PromptTemplates.bing_analysis_user(user_question, bing_results),
     )
 
+
 def get_reddit_analysis_messages(
     user_question: str, reddit_results: str, reddit_post_data: list
 ) -> list[Dict[str, Any]]:
@@ -183,5 +188,17 @@ def get_reddit_analysis_messages(
         PromptTemplates.reddit_analysis_system(),
         PromptTemplates.reddit_analysis_user(
             user_question, reddit_results, reddit_post_data
+        ),
+    )
+
+
+def get_synthesis_messages(
+    user_question: str, google_analysis: str, bing_analysis: str, reddit_analysis: str
+) -> list[Dict[str, Any]]:
+    """Get messages for final synthesis."""
+    return create_message_pair(
+        PromptTemplates.synthesis_system(),
+        PromptTemplates.synthesis_user(
+            user_question, google_analysis, bing_analysis, reddit_analysis
         ),
     )

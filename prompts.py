@@ -128,3 +128,20 @@ Please synthesize these analyses into a comprehensive answer that addresses the 
 
 
 def create_message_pair(system_prompt: str, user_prompt: str) -> list[Dict[str, Any]]:
+    """
+    Create a standardized message pair for LLM interactions.
+
+    Args:
+        system_prompt: The system message content
+        user_prompt: The user message content
+
+    Returns:
+        List containing system and user message dictionaries
+    """
+    return [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_prompt},
+    ]
+
+
+# Convenience functions for creating complete message arrays

@@ -175,3 +175,13 @@ def get_bing_analysis_messages(
         PromptTemplates.bing_analysis_user(user_question, bing_results),
     )
 
+def get_reddit_analysis_messages(
+    user_question: str, reddit_results: str, reddit_post_data: list
+) -> list[Dict[str, Any]]:
+    """Get messages for Reddit discussions analysis."""
+    return create_message_pair(
+        PromptTemplates.reddit_analysis_system(),
+        PromptTemplates.reddit_analysis_user(
+            user_question, reddit_results, reddit_post_data
+        ),
+    )

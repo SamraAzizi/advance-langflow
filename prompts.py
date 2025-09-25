@@ -145,3 +145,17 @@ def create_message_pair(system_prompt: str, user_prompt: str) -> list[Dict[str, 
 
 
 # Convenience functions for creating complete message arrays
+
+def get_reddit_url_analysis_messages(
+    user_question: str, reddit_results: str
+) -> list[Dict[str, Any]]:
+    """Get messages for Reddit URL analysis."""
+    return create_message_pair(
+        PromptTemplates.reddit_url_analysis_system(),
+        PromptTemplates.reddit_url_analysis_user(user_question, reddit_results),
+    )
+
+
+def get_google_analysis_messages(
+    user_question: str, google_results: str
+) -> list[Dict[str, Any]]:

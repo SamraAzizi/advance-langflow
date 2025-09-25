@@ -6,6 +6,7 @@ from langchain.chat_models import init_chat_model
 from typing_extensions import TypedDict
 from pydantic import BaseModel, Field
 from web_operations import serp_search, reddit_search_api
+from prompts import get_reddit_analysis_messages, get_google_analysis_messages, get_bing_analysis_messages, get_reddit_url_analysis_messages, get_synthesis_messages
 
 
 load_dotenv()
@@ -24,6 +25,9 @@ class State(TypedDict):
     bing_analysis: str | None
     reddit_analysis: str | None
     final_answer: str | None
+
+class RedditURLAnalysis(BaseModel):
+    selected_urls: List[str] = Field(description="List of reddit URLs that contain valuable information for answering the user question: ")
 
 
 def google_search(state: State):
@@ -57,6 +61,19 @@ def reddit_search(state: State):
 
 
 def analyze_reddit_posts(state: State):
+    user_question = state.get("user_question")
+    reddit_results = state.get("reddit_results", "")
+
+    if not reddit_results:
+        return { "selected_reddit_urls" : []}
+    
+    structured_llm = llm.with_structured_output(RedditURLAnalysis)
+    messages = get_reddit_analysis_messages(user_question, reddit_results)
+
+
+    try:
+        analysis = structured_llm.invoke(messages)
+
 
     return { "selected_reddit_urls" : []}
 

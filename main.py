@@ -127,7 +127,15 @@ def analyze_google_results(state: State):
 
 
 def analyze_bing_results(state: State):
-    return {"bing_analysis": ""}
+    print("Analysing bing search results")
+
+    user_question = state.get("user_question", "")
+    google_results = state.get("bing_results")
+
+    messages = get_bing_analysis_messages(user_question, google_results)
+    reply = llm.invoke(messages)
+    return {"bing_analysis": reply.content}
+    
 
 
 def analyze_reddit_results(state: State):

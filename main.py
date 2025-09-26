@@ -139,14 +139,14 @@ def analyze_bing_results(state: State):
 
 
 def analyze_reddit_results(state: State):
-    print("Analysing bing search results")
+    print("Analysing redditg search results")
 
     user_question = state.get("user_question", "")
-    bing_results = state.get("bing_results")
+    reddit_results = state.get("reddit_results")
 
-    messages = get_bing_analysis_messages(user_question, bing_results)
+    messages = get_reddit_analysis_messages(user_question, reddit_results)
     reply = llm.invoke(messages)
-    return {"bing_analysis": reply.content} 
+    return {"reddit_analysis": reply.content} 
 
 
 

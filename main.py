@@ -105,10 +105,24 @@ def retrieve_reddit_posts(state: State):
     if reddit_post_data:
         print(f"Successfully got {len(reddit_post_data)} Posts")
 
-    return  {"reddit_post_data": []}
+    else:
+        print("Failed to get post data")
+        reddit_post_data = []
+
+
+    print(reddit_post_data)
+    return  {"reddit_post_data": reddit_post_data}
 
 def analyze_google_results(state: State):
-    return {"google_analysis": ""}
+
+    print("Analysing google search results")
+
+    user_question = state.get("user_question", "")
+    google_results = state.get("google_results")
+
+    messages = get_google_analysis_messages(user_question, google_results)
+    reply = llm.invoke(messages)
+    return {"google_analysis": reply.content}
 
 
 

@@ -60,3 +60,23 @@ advance-langflow/
 ├── .gitignore            # Git ignore rules
 └── .python-version       # Python version specification
 ```
+
+## Configuration
+### Environment Variables
+
+Create a .env file with the following variables:
+
+```bash
+# API Keys
+OPENAI_API_KEY=your_openai_api_key_here
+LANGSMITH_API_KEY=your_langsmith_key
+LANGSMITH_PROJECT=advance-langflow
+
+# Application Settings
+HOST=localhost
+PORT=7860
+DEBUG=True
+
+# Database (if applicable)
+DATABASE_URL=sqlite:///./langflow.db
+```

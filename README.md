@@ -108,3 +108,36 @@ The application provides various endpoints for:
 - Snapshot creation and restoration
 - Prompt template management
 - System monitoring
+
+## Development
+
+### Dependencies Management
+
+This project uses `uv` for fast dependency management. Key dependencies include:
+- FastAPI or Flask for web framework
+- LangFlow core components
+- AI/ML libraries for workflow execution
+- Web interface libraries
+
+### Adding New Features
+
+1. Add new route handlers in `web_operations.py`
+2. Implement business logic in respective operation files
+3. Update prompts in `prompts.py` if needed
+4. Test thoroughly before committing
+
+## Modules
+
+### main.py
+Main application entry point containing:
+
+- Application initialization
+- Route definitions
+- Server configuration
+
+### web_operations.py
+Web interface operations including:
+
+- HTTP request handlers
+- Workflow execution endpoints
+- UI rendering logic

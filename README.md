@@ -80,3 +80,31 @@ DEBUG=True
 # Database (if applicable)
 DATABASE_URL=sqlite:///./langflow.db
 ```
+
+## Usage
+
+### Starting the Web Interface
+```bash
+python main.py
+```
+
+The application will start and be accessible at `http://localhost:7860`
+
+### Key Features
+
+- Web-based Workflow Management - Create and manage LangFlow workflows through a web interface
+
+- Snapshot Operations - Save and load workflow snapshots
+
+- Prompt Management - Manage and version control your AI prompts
+
+- Real-time Execution - Execute workflows in real-time with live results
+
+### API Endpoints
+
+The application provides various endpoints for:
+
+- Workflow execution and management
+- Snapshot creation and restoration
+- Prompt template management
+- System monitoring

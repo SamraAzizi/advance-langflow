@@ -37,3 +37,26 @@ cp .env.example .env
 ```bash
 python main.py
 ```
+
+### Alternative Installation with pip
+
+```bash
+pip install -r requirements.txt
+python main.py
+```
+
+### Project Structure
+
+```bash
+
+advance-langflow/
+├── main.py                 # Main application entry point
+├── web_operations.py       # Web interface operations and handlers
+├── snapshot_operations.py  # Workflow snapshot management
+├── prompts.py             # Prompt templates and management
+├── pyproject.toml         # Project dependencies and configuration
+├── uv.lock                # Lock file for dependency versions
+├── .env                   # Environment variables (create from .env.example)
+├── .gitignore            # Git ignore rules
+└── .python-version       # Python version specification
+```

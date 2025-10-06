@@ -141,3 +141,36 @@ Web interface operations including:
 - HTTP request handlers
 - Workflow execution endpoints
 - UI rendering logic
+
+### snapshot_operations.py
+Workflow snapshot management:
+- Save current workflow state
+- Load previous snapshots
+- Snapshot version control
+
+
+### prompts.py
+Prompt template management:
+
+- AI prompt templates
+- Prompt versioning
+- Template rendering
+
+
+## Troubleshooting
+### Common Issues
+
+1. Module not found errors
+```bash 
+uv sync  # Re-sync dependencies
+```
+
+2. Environment variables not loading
+  - Ensure `.env` file exists in root directory
+  - Check variable names match expected values
+
+3. Port already in use
+```bash
+# Change port in .env or use different port
+PORT=7861 python main.py
+```

@@ -18,3 +18,22 @@ This project offers a web-based interface for managing and executing advanced La
 ```bash
 git clone https://github.com/SamraAzizi/advance-langflow.git
 cd advance-langflow
+```
+
+2. **Install dependencies using UV**
+
+```bash
+uv sync
+```
+
+3. **Set up environment variables**
+```bash
+cp .env.example .env
+# Edit .env with your configuration
+```
+
+4. **Run the application**
+
+```bash
+python main.py
+```
